@@ -14,16 +14,14 @@ var sectionHeight = function() {
 $(window).resize(sectionHeight);
 
 $(document).ready(function(){
-  console.log("document ready")
   $("h2").each(function(){
-    console.log("node name"+this.nodeName.toLowerCase())
+    $("nav ul").addClass("nav")
     $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'') + "'>" + $(this).text() + "</a></li>");
     $(this).attr("id",$(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,''));
     $("nav ul li:first-child a").parent().addClass("active");
   });
 
   $("nav ul li").on("click", "a", function(event) {
-    console.log("node name1"+this.nodeName.toLowerCase())
     var position = $($(this).attr("href")).offset().top - 190;
     $("html, body").animate({scrollTop: position}, 400);
     $("nav ul li a").parent().removeClass("active");
