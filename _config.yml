@@ -1,0 +1,44 @@
+# Permalinks
+permalink:           pretty
+baseurl: ""
+
+# Setup
+title:               Raj Shanmuganathan
+tagline:             Software Engineer, currently pursuing M.S. Data Science at Regis university, Denver.
+url:                 https://github.com/rajkumargithub
+paginate:            1
+baseurl:             ""
+markdown:            Kramdown
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# Author settings
+author:
+  name: Raj Shanmuganathan
+  job: Software Engineering Manager at Comcast
+  thumb: /public/images/author.jpeg
+  email: ramsrajkumar@gmail.com
+  url: https://rajkumar.github.io
+  github: https://github.com/rajkumargithub
+  twitter: https://twitter.com/ramsrajkumar
+#  facebook: https://facebook.com/umdevux
+  linkedin: https://www.linkedin.com/in/rajkumar-shanmuganathan-5774b413/
+
+# Custom vars
+version:             2.0.0
+github:
+  repo:              https://github.com/poole/poole
+
+# Gems
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+
+pages_list:
+  About: '/about'
+  Posts: '/posts'
+  Feed: '/atom.xml'

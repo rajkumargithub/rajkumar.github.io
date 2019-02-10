@@ -1,0 +1,15 @@
+#{$all-buttons}
+  @extend %button
+
+.button
+  @extend %button
+
+  &-ghost
+    background-color: transparent
+    border: 2px solid $primary-color
+    color: $primary-color
+    margin-bottom: 2px
+
+    &:hover,
+    &:focus
+      color: #fff
