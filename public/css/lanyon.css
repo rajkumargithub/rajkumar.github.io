@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 56rem) {
   .container {
-    max-width: 60rem;
+    max-width: 50rem;
   }
 }
 
@@ -561,7 +561,7 @@ a.pagination-item:hover {
 nav {
   position: fixed;
   left: 50%;
-  margin-left: -20%;
+  margin-left: -750px;
   padding-top: 2px;
   text-align: left;
   font-size: initial;
