@@ -22,12 +22,12 @@ author:
   name: Raj Shanmuganathan
   job: Software Engineering Manager at Comcast
   thumb: /public/images/author.jpeg
-  email: ramsrajkumar@gmail.com
+  email: mailto:ramsrajkumar@gmail.com
   url: https://rajkumar.github.io
   github: https://github.com/rajkumargithub
   twitter: https://twitter.com/ramsrajkumar
 #  facebook: https://facebook.com/umdevux
-  linkedin: www.linkedin.com/in/ramsrajkumar
+  linkedin: https://www.linkedin.com/in/ramsrajkumar
 
 # Custom vars
 version:             2.0.0
@@ -40,6 +40,6 @@ gems:
   - jekyll-gist
 
 pages_list:
-  About: '/about'
+  About Me: '/about'
   Posts: '/posts'
   Feed: '/atom.xml'

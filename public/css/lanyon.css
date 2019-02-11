@@ -559,10 +559,9 @@ a.pagination-item:hover {
 }
 
 nav {
-  width: 230px;
   position: fixed;
   left: 50%;
-  margin-left: -880px;
+  margin-left: -20%;
   padding-top: 2px;
   text-align: left;
   font-size: initial;
