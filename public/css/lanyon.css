@@ -72,23 +72,18 @@ h1, h2, h3, h4, h5, h6 {
  * Center the page content.
  */
 
-.container {
-  max-width: 28rem;
+
+/* article.post, aside.related, .footer {
+  width: 70%;
+  float:none;
 }
-@media (min-width: 38rem) {
-  .container {
-    max-width: 32rem;
-  }
-}
-@media (min-width: 56rem) {
-  .container {
-    max-width: 50rem;
-  }
-}
+.nav-container {
+  display: block;
+  width: 30%;
+} */
 
 .content-wrapper {
   clear: both;
-
 }
 
 /*
@@ -559,6 +554,10 @@ a.pagination-item:hover {
   width:30%;
 }
 
+article.page {
+  margin-bottom: 0;
+}
+
 article.post,
 aside.related
 {
@@ -579,6 +578,7 @@ nav {
   position: fixed;
   text-align: left;
   font-size: initial;
+  font-size: 0.900em;
 
  .nav ul {
     list-style-type: none;

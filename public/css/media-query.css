@@ -1,0 +1,230 @@
+/* ----------- Non-Retina Screens ----------- */
+@media screen
+ and (min-device-width: 1200px)
+ and (max-device-width: 1600px)
+ and (-webkit-min-device-pixel-ratio: 1) {
+   .container {
+     max-width: 50rem;
+   }
+   article.post, aside.related, .footer {
+     width: 70%;
+     float:right;
+   }
+   .nav-container {
+     width: 30%;
+     display: block;
+   }
+   .footer,
+   .pagination {
+     clear: both;
+     text-align: center;
+   }
+   .footer {
+     border-top: 1px solid #e4e4e4;
+     width: 100%
+   }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen
+ and (min-device-width: 1200px)
+ and (max-device-width: 1600px)
+ and (-webkit-min-device-pixel-ratio: 2)
+ and (min-resolution: 192dpi) {
+   .container {
+     max-width: 50rem;
+   }
+   article.post, aside.related, .footer {
+     width: 70%;
+     float:right;
+   }
+   .nav-container {
+     width: 30%;
+     display: block;
+   }
+   .footer,
+   .pagination {
+     clear: both;
+     text-align: center;
+   }
+   .footer {
+     border-top: 1px solid #e4e4e4;
+     width: 100%
+   }
+}
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 70%;
+    float:right;
+  }
+  .nav-container {
+    width: 30%;
+    display: block;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 70%;
+    float:right;
+  }
+  .nav-container {
+    width: 30%;
+    display: block;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 100%;
+    float:right;
+  }
+  .nav-container {
+    display: none;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 70%;
+    float:right;
+  }
+  .nav-container {
+    width: 30%;
+    display: block;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 100%;
+    float:none;
+  }
+  .nav-container {
+    display: none;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .container {
+    max-width: 50rem;
+  }
+  article.post, aside.related, .footer {
+    width: 100%;
+    float:none;
+  }
+  .nav-container {
+    display: none;
+  }
+  .footer,
+  .pagination {
+    clear: both;
+    text-align: center;
+  }
+  .footer {
+    border-top: 1px solid #e4e4e4;
+    width: 100%
+  }
+
+}
