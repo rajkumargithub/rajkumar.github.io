@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-wrapper {
-  clear: both
+  clear: both;
 
 }
 
@@ -559,12 +559,15 @@ a.pagination-item:hover {
   width:30%;
 }
 
-article.post {
+article.post,
+aside.related
+{
   float: right;
   width: 70%;
 }
 
 .nav {
+  left: 50%;
   background-color: #efefef;
   border-radius: 6px;
   list-style-type: none;
@@ -574,9 +577,6 @@ article.post {
 
 nav {
   position: fixed;
-  left: 50%;
-  margin-left: -750px;
-  padding-top: 2px;
   text-align: left;
   font-size: initial;
 
