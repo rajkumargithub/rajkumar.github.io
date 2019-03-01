@@ -284,14 +284,36 @@ I assessed the performance of the model on the test set by study types and by co
 Ensemble model performs poorly to the XR_HAND, XR_SHOULDER & XR_FINGER study types. Overall the ensemble model has significantly higher error rate and lower kappa statistic.
 
 ## Visualizing Filters
+I have attempted to visualize the inputs that maximize the activation of convolutional layer filters. I trained the network by study types. It is interesting to see how each network present itself different visual behavior for every layer layer. 
 
+Eblow
+<br/>
 ![image](/public/images/elbow.jpg)
+<br/>
+Humerus
+<br/>
 ![image](/public/images/humerus.jpg)
+<br/>
+Wrist
+<br/>
 ![image](/public/images/wrist.jpg)
+<br/>
+Forearm
+<br/>
 ![image](/public/images/forearm.jpg)
+<br/>
+Hand
+<br/>
 ![image](/public/images/hand.jpg)
+<br/>
+Finger
+<br/>
 ![image](/public/images/finger.jpg)
+<br/>
+Shoulder
+<br/>
 ![image](/public/images/shoulder.jpg)
+<br/>
 
 ## Further Discussions
 As per the [paper](https://arxiv.org/abs/1712.06957), model interpretation is done using class activation mappings. The parts of radiographs which contribute most to the model's prediction of abnormality has been visualized. Class activation mappings have been computed using weighted average of the feature map using the weights of the fully connected layer.
