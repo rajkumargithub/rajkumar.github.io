@@ -214,7 +214,6 @@ base_model = DenseNet169(input_shape=(None, None,3),
                          include_top=False,
                          pooling='avg')
 x = base_model.output
-x = Dropout(0.1)(x)
 predictions = Dense(n_classes,activation='sigmoid')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
 model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['acc', 'mse'])
@@ -234,13 +233,90 @@ plot_model(model, to_file='images/densenet_archi.png', show_shapes=True)
 ![image](/public/images/densenet_archi.png)
 
 ## Training
-To be completed..
+The network was initialized with weights from a model pretrained on imagenet. The network was trained to end-to-end using Adam with default parameters. I used the same batch size=8 followed by the original paper. The learning rate is configured with 0.0001 (decay by factor 10 each time the validation loss plateaus after an epoch) I trained networks for each study types separately.
 
-## Performance Fine-tuning
-To be completed..
+{% highlight python}
+epochs = 10
+batch_size = 8
+steps_per_epoch = nb_train_samples//batch_size
+print(steps_per_epoch)
+n_classes = 1
 
-## Prediction
-To be completed..
+model_history = model.fit_generator(
+    train_generator,
+    epochs=epochs,
+    workers=0,
+    use_multiprocessing=False,  
+    steps_per_epoch = nb_train_samples//batch_size,
+    validation_data=validation_generator,
+    validation_steps=nb_validation_samples //batch_size,
+    callbacks=callbacks_list
+)
+{% endhighlight}
+
+## Performance Evaluation
+I assessed the performance of the model on the test set by study types and by comparing them against the ensemble model. I created the ensemble using the top performing models from each study types. I compared the kappa statistic, precision & recall. The individual models trained on the specific study types performed much better compared to ensemble model. Though the ensemble model can be used to predict any study type, the performance difference in some study types has been poor. For elbow studies the kappa statistic was 0.6945. For the finger studies it was 0.5602, Similarly for forearm the performance of the model was 0.5219. Hand, Humerus, Wrist & Shoulder are 0.4078, 0.6461, 0.6971 & 0.5736 respectively. Pls see the table below for comparisons.
+
+**Individual Model Performance**
+
+|Study Type|Kappa Static|Precision|Recall|Error|
+|---|---|---|---|---|
+|XR_WRIST|0.6971|0.86|0.85|0.1085|
+|XR_ELBOW|0.6945|0.85|0.85|0.1355|
+|XR_HUMERUS|0.6461|0.82|0.82|0.1806|
+|XR_SHOULDER|0.5736|0.79|0.79|0.2958|
+|XR_FINGER|0.5602|0.78|0.78|0.2191|
+|XR_FOREARM|0.5219|0.77|0.76|0.2326|
+|XR_HAND|0.4078|0.73|0.73|0.4305|
+
+**Ensemble Model Performance**
+
+|Study Type|Kappa Static|Precision|Recall|Error|
+|---|---|---|---|---|
+|XR_WRIST|0.5103|0.84|0.84|0.2466|
+|XR_ELBOW|0.5935|0.85|0.85|0.2033|
+|XR_HUMERUS|0.5362|0.82|0.82|0.2326|
+|XR_SHOULDER|0.1362|0.61|0.61|0.4366|
+|XR_FINGER|0.3268|0.74|0.74|0.3266|
+|XR_FOREARM|0.4866|0.76|0.74|0.2566|
+|XR_HAND|0.1590|0.61|0.61|0.3933|
+
+Ensemble model performs poorly to the XR_HAND, XR_SHOULDER & XR_FINGER study types. Overall the ensemble model has significantly higher error rate and lower kappa statistic.
+
+## Visualizing Filters
+
+## Further Discussions
+As per the [paper](https://arxiv.org/abs/1712.06957), model interpretation is done using class activation mappings. The parts of radiographs which contribute most to the model's prediction of abnormality has been visualized. Class activation mappings have been computed using weighted average of the feature map using the weights of the fully connected layer.
+
+## References
+https://www.youtube.com/watch?v=UWlFM0R_x6I&index=3&list=PLZbbT5o_s2xrfNyHZsM6ufI0iZENK9xgG
+http://cs231n.github.io/convolutional-networks/
+https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68
+https://idyll.pub/post/dimensionality-reduction-293e465c2a3443e8941b016d/
+https://arxiv.org/pdf/1608.06993.pdf
+https://www.kaggle.com/muonneutrino/exploration-transforming-images-in-python/data
+https://arxiv.org/abs/1406.4729
+http://cs231n.github.io/
+http://cs231n.github.io/convolutional-networks/
+
+https://medium.com/intuitionmachine/notes-on-the-implementation-densenet-in-tensorflow-beeda9dd1504
+https://becominghuman.ai/cheat-sheets-for-ai-neural-networks-machine-learning-deep-learning-big-data-678c51b4b463
+https://github.com/Kulbear/deep-learning-nano-foundation/wiki/ReLU-and-Softmax-Activation-Functions
+https://medium.com/@vijayabhaskar96/tutorial-on-keras-imagedatagenerator-with-flow-from-dataframe-8bd5776e45c1
+https://medium.com/data-science-bootcamp/understand-the-softmax-function-in-minutes-f3a59641e86d
+https://www.youtube.com/watch?v=nDPWywWRIRo
+https://cs.stanford.edu/people/karpathy/
+
+https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/
+https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a
+https://towardsdatascience.com/exploring-activation-functions-for-neural-networks-73498da59b02
+https://github.com/shudima/notebooks/blob/master/Activation%20Functions.ipynb
+https://github.com/Arsey/keras-transfer-learning-for-oxford102/issues/1
+https://scottontechnology.com/flip-image-opencv-python/
+https://www.dlology.com/blog/simple-guide-on-how-to-generate-roc-plot-for-keras-classifier/
+https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
+
 
 ## Training Environment Setup
 I used AWS EC2 _p3.2xlarge_ instance for my training. This specific instance comes with _Tesla V100_ GPU. I opted for _Deep Learning AMI (Ubuntu) Version 21.0 - ami-09a706a24845d072_ image to boot up the EC2 instance. This image already loaded with the CUDA, Tensorflow & Keras modules. I activated _tensorflow_p36_ virtual environment to spin up jupyter notebook with the _Python 3_ kernel. Then i followed this [link](https://aws.amazon.com/getting-started/tutorials/get-started-dlami/) to create a tunnel to access the notebook url from my laptop.
