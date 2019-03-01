@@ -255,7 +255,7 @@ model_history = model.fit_generator(
 {% endhighlight %}
 
 ## Performance Evaluation
-I assessed the performance of the model on the test set by study types and by comparing them against the ensemble model. I created the ensemble using the top performing models from each study types. I compared the kappa statistic, precision & recall. The individual models trained on the specific study types performed much better compared to ensemble model. Though the ensemble model can be used to predict any study type, the performance difference in some study types has been poor. For elbow studies the kappa statistic was 0.6945. For the finger studies it was 0.5602, Similarly for forearm the performance of the model was 0.5219. Hand, Humerus, Wrist & Shoulder are 0.4078, 0.6461, 0.6971 & 0.5736 respectively. Pls see the table below for comparisons.
+I assessed the performance of the model on the test set by study types and by comparing them against the ensemble model. The ensemble model has been created using the top performing models from each study types. The performance has been compared using the kappa statistic, precision & recall. The individual models trained on the specific study types performed much better compared to ensemble model. Though the ensemble model can be used to predict any study type, the performance difference in some study types has been poor. For elbow studies the kappa statistic was 0.6945. For the finger studies it was 0.5602, Similarly for forearm the performance of the model was 0.5219. Hand, Humerus, Wrist & Shoulder are 0.4078, 0.6461, 0.6971 & 0.5736 respectively. Pls see the table below for comparisons.
 
 **Individual Model Performance**
 
