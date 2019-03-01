@@ -235,7 +235,7 @@ plot_model(model, to_file='images/densenet_archi.png', show_shapes=True)
 ## Training
 The network was initialized with weights from a model pretrained on imagenet. The network was trained to end-to-end using Adam with default parameters. I used the same batch size=8 followed by the original paper. The learning rate is configured with 0.0001 (decay by factor 10 each time the validation loss plateaus after an epoch) I trained networks for each study types separately.
 
-{% highlight python}
+{% highlight python %}
 epochs = 10
 batch_size = 8
 steps_per_epoch = nb_train_samples//batch_size
@@ -252,7 +252,7 @@ model_history = model.fit_generator(
     validation_steps=nb_validation_samples //batch_size,
     callbacks=callbacks_list
 )
-{% endhighlight}
+{% endhighlight %}
 
 ## Performance Evaluation
 I assessed the performance of the model on the test set by study types and by comparing them against the ensemble model. I created the ensemble using the top performing models from each study types. I compared the kappa statistic, precision & recall. The individual models trained on the specific study types performed much better compared to ensemble model. Though the ensemble model can be used to predict any study type, the performance difference in some study types has been poor. For elbow studies the kappa statistic was 0.6945. For the finger studies it was 0.5602, Similarly for forearm the performance of the model was 0.5219. Hand, Humerus, Wrist & Shoulder are 0.4078, 0.6461, 0.6971 & 0.5736 respectively. Pls see the table below for comparisons.
