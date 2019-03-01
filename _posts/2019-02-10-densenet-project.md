@@ -285,6 +285,14 @@ Ensemble model performs poorly to the XR_HAND, XR_SHOULDER & XR_FINGER study typ
 
 ## Visualizing Filters
 
+![image](/public/images/elbow.jpg)
+![image](/public/images/humerus.jpg)
+![image](/public/images/wrist.jpg)
+![image](/public/images/forearm.jpg)
+![image](/public/images/hand.jpg)
+![image](/public/images/finger.jpg)
+![image](/public/images/shoulder.jpg)
+
 ## Further Discussions
 As per the [paper](https://arxiv.org/abs/1712.06957), model interpretation is done using class activation mappings. The parts of radiographs which contribute most to the model's prediction of abnormality has been visualized. Class activation mappings have been computed using weighted average of the feature map using the weights of the fully connected layer.
 
