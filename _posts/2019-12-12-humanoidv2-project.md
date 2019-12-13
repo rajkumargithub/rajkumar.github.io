@@ -30,7 +30,7 @@ Beyond the agent, and the environment, there are three main sub-elements of a re
 |Left_shoulder2|
 |Left_elbow|
 
-## Explore the Observation & Action spaces
+## Observations & Action
 {% highlight python %}
 def exploreEnvironment(env_name):
     env = gym.make(env_name)
@@ -82,7 +82,7 @@ Actions: [-0.14736511 -0.19623487  0.29322252  0.15847471 -0.365481    0.1199538
 
 The values are high-dimensional numerical datasets. The desired behavior is assessed by the reward gained for every step. Reward is calculated by various metrics calculated from body mass, quad_control_cost, quad_impact_cost, lin_vel_cost and alive_bonus.
 
-## Proximal Policy Optimization Algorithms
+## PPO Algorithm
 There are several approaches to the Reinforcement Learning with Neural Network function approximators such as deep Q-learning, Vanilla policy gradient methods, and trust region/ natural policy gradient methods. However, these approaches have their drawbacks. For example, deep Q-learning is often poorly understood, complex in nature. Vanilla policy gradient methods have poor data efficiency and robustness. Trust region policy optimization is relatively complicated and is not compatible with architectures that include noise or parameter sharing. Proximity Policy Optimization (PPO) is proposed to achieve the data efficiency and reliable performance. This proposed method alternates between sampling data through interaction with the environment and optimizing a surrogate objective function using stochastic gradient ascent. Standard policy gradient methods perform one gradient update per data sample, PPO performs multiple epochs of minibatch updates. Further TRPO has a constraint to stay near the old policy has achieved excellent results in continuous control tasks. Any large change from the previous policy in high dimensional, nonlinear environment leads to drastic performance issues can even result in erratic learning of the agent. One way to achieve it is by taking micro-level policy steps by controlling the learning rate. However, learning rate & policy step size depend on many factors such as model architecture, optimizer algorithm, number of training epochs and data. In PPO the TRPO constraint is achieved through training loss function. With this loss function in place, policy is trained using neural network.
 
 ### Implementation of Policy orchestration.
@@ -110,7 +110,7 @@ hid3_size = self.act_dim * 10
 hid2_size = int(np.sqrt(hid1_size * hid3_size))
 {% endhighlight %}
 
-There are three loss functions defined. Loss function 1 is standard policy gradient function. Loss function 2 is KL Divergence {D_KL(pi_old || pi_new)} and finally Loss function 3 is Hinge loss to be used when D_KL exceeds the target value.  Finally the NN use AdamOptimizer minimizing the overall loss. Also, after every episode the policy is getting updated based on the D_KL and KL_target by adjusting the learning rate.
+There are three loss functions defined. Loss function 1 is standard policy gradient function. Loss function 2 is KL Divergence {D_KL(pi_old / pi_new)} and finally Loss function 3 is Hinge loss to be used when D_KL exceeds the target value.  Finally the NN use AdamOptimizer minimizing the overall loss. Also, after every episode the policy is getting updated based on the D_KL and KL_target by adjusting the learning rate.
 
 ## Value Function
 
@@ -141,7 +141,7 @@ Figure 6: Observation Statistics
 
 
 ## Video
-![training](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/jWmjks9W8wQ)
+[![training](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/jWmjks9W8wQ)
 
 ## Further Discussions
 These models further can be evaluated for transfer learning. Such as pre-trained humanoid stand up, walking models can be used for future applications such as sit-down, stair claiming and etc. (Coady, 2017)
